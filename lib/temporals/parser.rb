@@ -4,7 +4,7 @@ class Temporal
       puts "Parsing expression: #{expression.inspect}" if $DEBUG
       # 1. Normalize the expression
       # TODO: re-create normalize: ' -&| ', 'time-time'
-      expression.gsub!(/\s+/,' ').gsub!(/([\-\&\|])/,' \1 ')
+      expression.gsub!(/\s+/,' ').gsub!(/([\-\&\|])/,' \1 ') rescue nil
       expression.gsub!(/(#{TimeRegexp}?) +- +(#{TimeRegexp})/,'\1-\2')
       expression.gsub!(/in ([09]\d|\d{4})/) {|s|
         y = $1
